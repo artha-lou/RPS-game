@@ -7,7 +7,56 @@
     <body>
         <script>
             // JavaScript goes here!
+            let playerSelection = prompt("Please select: rock, paper, scissors?");
+            let pnum = playerSelection.toLowerCase()
+
+            if (pnum == "rock") {
+                playerSelection = 1;
+            } else if (pnum == "paper") {
+                playerSelection = 2;
+            } else {
+                playerSelection = 3;
+            }
+
+            let computerSelection = (Math.floor(Math.random()*3)+1);
+            let cnum = computerSelection;
+            if (cnum == 1) {
+                cnum = "rock";
+            } else if (cnum == 2) {
+                cnum = "paper";
+            } else {
+                cnum = "scissors";
+            }
+
+            if (playerSelection == computerSelection) {
+                //return("Draw, try again!")
+                console.log("Draw, try again")
+                let playerSelection = prompt("Please select: rock, paper, scissors?");
+            } else if (playerSelection == 1 & computerSelection == 2) {
+               // return("Computer wins!")
+                console.log("Computer wins!");
+            } else if (playerSelection == 1 & computerSelection == 3) {
+                //return("Player wins!")
+                console.log("Player wins!");
+            } else if (playerSelection == 2 & computerSelection == 1) {
+               // return("Computer wins!")
+                console.log("Computer wins!");
+            } else if (playerSelection == 2 & computerSelection == 3) {
+               // return("Player wins!")
+                console.log("Player wins!");
+            } else if (playerSelection == 3 & computerSelection == 1) {
+               // return("Computer wins!")
+                console.log("Computer wins!");
+            } else if (playerSelection == 3 & computerSelection == 2) {
+               // return("Player wins!")
+                console.log("Player wins!");
+            } else {
+               console.log("Please try again");
+            }
             
+            console.log("player:", playerSelection, pnum);
+            console.log("computer:", computerSelection, cnum);
+
         </script>
     </body>
 </html>
