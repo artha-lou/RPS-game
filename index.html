@@ -36,7 +36,7 @@
             }
         }
 
-        
+        function game(playerSelection, computerSelection) {
             while (playerLives != 0 && computerLives != 0) {
                 playerSelection = prompt("rock, paper, scissors?")
                 computerSelection = (Math.floor(Math.random()*3)+1);
@@ -75,11 +75,12 @@
                 console.log("Player Selection:", pnum, playerSelection)
 
                 if (playerLives === 0) {
-                    console.log("Computer is the winner!");
+                    return("Computer is the winner!");
                 } else if (computerLives === 0) {
-                    console.log("Player is the winner!")
+                    return("Player is the winner!")
                 } 
             }
+        }
 
 
 
