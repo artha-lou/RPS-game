@@ -7,18 +7,11 @@
     <body>
         <script>
             // JavaScript goes here!
-            let playerSelection = prompt("Please select: rock, paper, scissors?");
+            let playerSelection = "";
             let pnum = playerSelection.toLowerCase()
 
-            let computerSelection = (Math.floor(Math.random()*3)+1);
-            let cnum = computerSelection;
-            if (cnum == 1) {
-                cnum = "rock";
-            } else if (cnum == 2) {
-                cnum = "paper";
-            } else {
-                cnum = "scissors";
-            }
+            let computerSelection = 0;
+            let cnum = "";
 
             let playerLives = 5;
             let computerLives = 5;
@@ -26,33 +19,19 @@
             function playRound(playerSelection, computerSelection) {
             if (playerSelection == computerSelection) {
                 return("Draw, try again!")
-                //console.log("Draw, try again")
             } else if (playerSelection == 1 & computerSelection == 2) {
                 return("Computer wins!");
-                computerLives = computerLives + 1;
-                //console.log("Computer wins!");
             } else if (playerSelection == 1 & computerSelection == 3) {
                 return("Player wins!");
-                playerLives = playerLives + 1; 
-                //console.log("Player wins!");
             } else if (playerSelection == 2 & computerSelection == 1) {
                 return("Computer wins!");
-                computerLives = computerLives + 1;
-                //console.log("Computer wins!");
             } else if (playerSelection == 2 & computerSelection == 3) {
-                return("Player wins!");
-                playerLives = playerLives + 1; 
-                //console.log("Player wins!");
+                return("Player wins!"); 
             } else if (playerSelection == 3 & computerSelection == 1) {
                 return("Computer wins!");
-                computerLives = computerLives + 1;
-                //console.log("Computer wins!");
             } else if (playerSelection == 3 & computerSelection == 2) {
                 return("Player wins!");
-                playerLives = playerLives + 1; 
-                //console.log("Player wins!");
             } else {
-               //console.log("Please try again");
                return("Please try again");
             }
         }
@@ -61,6 +40,7 @@
             while (playerLives != 0 && computerLives != 0) {
                 playerSelection = prompt("rock, paper, scissors?")
                 computerSelection = (Math.floor(Math.random()*3)+1);
+                cnum = computerSelection
 
                 pnum = playerSelection.toLowerCase()
                 if (pnum == "rock") {
@@ -69,6 +49,14 @@
                  playerSelection = 2;
                 } else {
                  playerSelection = 3;
+                }
+
+                if (cnum == 1) {
+                cnum = "rock";
+                } else if (cnum == 2) {
+                cnum = "paper";
+                } else {
+                cnum = "scissors";
                 }
 
                 const result = playRound(playerSelection, computerSelection)
@@ -80,10 +68,11 @@
                 } else {
                     console.log("It's a draw!")
                 }
+                console.log(result)
                 console.log("Computer Lives:", computerLives)
                 console.log("Player Lives:", playerLives)
-                console.log("Computer Selection:", cnum)
-                console.log("Player Selection:", pnum)
+                console.log("Computer Selection:", cnum, computerSelection)
+                console.log("Player Selection:", pnum, playerSelection)
 
                 if (playerLives === 0) {
                     console.log("Computer is the winner!");
