@@ -73,7 +73,26 @@ function playRound(playerSelection, computerSelection) {
           return("Player is the winner!")
         } 
     }
-} */
+} 
 
 const resultValue = game()
-console.log(resultValue)
+console.log(resultValue)*/
+
+const rBtn = document.querySelector('rBtn');
+const pBtn = document.querySelector('pBtn');
+const sBtn = document.querySelector('sBtn');
+
+rBtn.addEventListener("click", () => {
+    playerSelection = input.value
+    input.value = 'rock'
+})
+
+pBtn.addEventListener("click", () => {
+    playerSelection = input.value
+    input.value = 'paper'
+})
+
+sBtn.addEventListener("click", () => {
+    playerSelection = input.value
+    input.value = 'scissors'
+})
