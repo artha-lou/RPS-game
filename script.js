@@ -8,30 +8,28 @@ let playerLives = 5;
 let computerLives = 5;
 
 function playRound(playerSelection, computerSelection) {
-if (playerSelection == computerSelection) {
-    return("Draw, try again!")
-} else if (playerSelection == 1 & computerSelection == 2) {
-    return("Computer wins!");
-} else if (playerSelection == 1 & computerSelection == 3) {
-    return("Player wins!");
-} else if (playerSelection == 2 & computerSelection == 1) {
-    return("Player wins!");
-} else if (playerSelection == 2 & computerSelection == 3) {
-    return("Computer wins!"); 
-} else if (playerSelection == 3 & computerSelection == 1) {
-    return("Computer wins!");
-} else if (playerSelection == 3 & computerSelection == 2) {
-    return("Player wins!");
-} else {
-   return("Please try again");
-}
+    if (playerSelection == computerSelection) {
+        return("Draw, try again!")
+    } else if (playerSelection == 1 & computerSelection == 2) {
+        return("Computer wins!");
+    } else if (playerSelection == 1 & computerSelection == 3) {
+        return("Player wins!");
+    } else if (playerSelection == 2 & computerSelection == 1) {
+        return("Player wins!");
+    } else if (playerSelection == 2 & computerSelection == 3) {
+        return("Computer wins!"); 
+    } else if (playerSelection == 3 & computerSelection == 1) {
+        return("Computer wins!");
+    } else if (playerSelection == 3 & computerSelection == 2) {
+        return("Player wins!");
+    } else {
+        return("Please try again");
+    }
 }
 
-function game(playerSelection, computerSelection) {
-while (playerLives != 0 && computerLives != 0) {
+function convert(playerSelection, computerSelection) {
     playerSelection = prompt("rock, paper, scissors?")
     computerSelection = (Math.floor(Math.random()*3)+1);
-    cnum = computerSelection
 
     pnum = playerSelection.toLowerCase()
     if (pnum == "rock") {
@@ -42,6 +40,7 @@ while (playerLives != 0 && computerLives != 0) {
      playerSelection = 3;
     }
 
+    cnum = computerSelection
     if (cnum == 1) {
     cnum = "rock";
     } else if (cnum == 2) {
@@ -49,7 +48,12 @@ while (playerLives != 0 && computerLives != 0) {
     } else {
     cnum = "scissors";
     }
+}
 
+function game(playerSelection, computerSelection) {
+while (playerLives != 0 && computerLives != 0) {
+
+    const choices = convert(playerSelection, computerSelection)
     const result = playRound(playerSelection, computerSelection)
 
     if (result === "Player wins!") {
