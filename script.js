@@ -1,5 +1,5 @@
 let playerSelection = "";
-let pnum = playerSelection.toLowerCase()
+let pnum = ""
 
 let computerSelection = 0;
 let cnum = "";
@@ -7,11 +7,13 @@ let cnum = "";
 let playerLives = 5;
 let computerLives = 5;
 
+let resultValue;
+let result;
+
 function select(playerSelection, computerSelection) {
-    playerSelection = prompt("rock, paper, scissors?")
     computerSelection = (Math.floor(Math.random()*3)+1);
 
-    pnum = playerSelection.toLowerCase()
+    pnum = playerSelection
     if (pnum == "rock") {
      playerSelection = 1;
     } else if (pnum == "paper") {
@@ -78,21 +80,32 @@ function playRound(playerSelection, computerSelection) {
 const resultValue = game()
 console.log(resultValue)*/
 
-const rBtn = document.querySelector('rBtn');
-const pBtn = document.querySelector('pBtn');
-const sBtn = document.querySelector('sBtn');
+const rBtn = document.querySelector('#rBtn');
+const pBtn = document.querySelector('#pBtn');
+const sBtn = document.querySelector('#sBtn');
+const resultDiv = document.getElementById('resultDiv');
 
 rBtn.addEventListener("click", () => {
-    playerSelection = input.value
-    input.value = 'rock'
+    playerSelection = "rock";
+    resultValue = select();
+    const result = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
+    resultDiv.textContent += `\nComputer selected: ${cnum}`;
 })
 
 pBtn.addEventListener("click", () => {
-    playerSelection = input.value
-    input.value = 'paper'
+    playerSelection = "paper";
+    resultValue = select()
+    const result = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
+    resultDiv.textContent += `\nComputer selected: ${cnum}`;
 })
 
 sBtn.addEventListener("click", () => {
-    playerSelection = input.value
-    input.value = 'scissors'
+    playerSelection = "scissors"
+    pnum = playerSelection
+    const { playerSelection, pnum, computerSelection, cnum } = select();
+    const result = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${playerSelection}\n${result}`;
+    resultDiv.textContent += `\nComputer selected: ${cnum}`;
 })
