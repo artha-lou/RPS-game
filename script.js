@@ -64,12 +64,34 @@ const pBtn = document.querySelector('#pBtn');
 const sBtn = document.querySelector('#sBtn');
 const resultDiv = document.getElementById('resultDiv');
 
+function updateResult(pnum, resultPlayRound, cnum) {
+    // Create elements
+    const playerElement = document.createElement('p');
+    const computerElement = document.createElement('p');
+    const resultElement = document.createElement('p');
+
+    // Set text content
+    playerElement.textContent = `Player selected: ${pnum}`;
+    computerElement.textContent = `Computer selected: ${cnum}`;
+    resultElement.textContent = resultPlayRound;
+
+    // Clear existing content
+    resultDiv.innerHTML = '';
+
+    // Append elements to the resultDiv
+    resultDiv.appendChild(playerElement);
+    resultDiv.appendChild(computerElement);
+    resultDiv.appendChild(resultElement);
+}
+
+// Example usage
+updateResult('rock', 'Player wins!', 'scissors');
+
 rBtn.addEventListener("click", () => {
     pnum = "rock";
     resultSelect = select(pnum)
     resultPlayRound = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${resultPlayRound}`;
-    resultDiv.textContent += `\nComputer selected: ${cnum}`;
+    updateResult(pnum, resultPlayRound, cnum);
     console.log(select(playerSelection))
     console.log(playRound(playerSelection, computerSelection))
 })
@@ -78,8 +100,7 @@ pBtn.addEventListener("click", () => {
     pnum = "paper";
     resultSelect = select(pnum);
     resultPlayRound = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${resultPlayRound}`;
-    resultDiv.textContent += `\nComputer selected: ${cnum}`;
+    updateResult(pnum, resultPlayRound, cnum);
     console.log(select(playerSelection))
     console.log(playRound(playerSelection, computerSelection))
 })
@@ -87,10 +108,8 @@ pBtn.addEventListener("click", () => {
 sBtn.addEventListener("click", () => {
     pnum = "scissors";
     resultSelect = select(pnum);
-    resultSelect
     resultPlayRound = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${resultPlayRound}`;
-    resultDiv.textContent += `\nComputer selected: ${cnum}`;
+    updateResult(pnum, resultPlayRound, cnum);
     console.log(select(playerSelection))
     console.log(playRound(playerSelection, computerSelection))
 })
