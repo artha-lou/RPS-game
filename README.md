@@ -8,3 +8,5 @@ The goal of this project is to allow the user to create a rock paper scissors ga
 when utilizing developer. 
 
 Java is written within the script of html for this project. 
+
+Live Preview: https://artha-lou.github.io/RPS-game
