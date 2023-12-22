@@ -10,18 +10,20 @@ let computerLives = 5;
 let resultValue;
 let result;
 
-function select(playerSelection, computerSelection) {
+function select(playerSelection) {
     computerSelection = (Math.floor(Math.random()*3)+1);
 
-    pnum = playerSelection
-    if (pnum == "rock") {
-     playerSelection = 1;
-    } else if (pnum == "paper") {
-     playerSelection = 2;
+    if (playerSelection == "rock") {
+        playerSelection = 1;
+        pnum = 'rock';
+    } else if (playerSelection == "paper") {
+        playerSelection = 2;
+        pnum = 'paper'
     } else {
-     playerSelection = 3;
+        playerSelection = 3;
+        pnum = 'scissors'
     }
-
+    
     cnum = computerSelection
     if (cnum == 1) {
     cnum = "rock";
@@ -30,6 +32,8 @@ function select(playerSelection, computerSelection) {
     } else {
     cnum = "scissors";
     }
+
+    return { playerSelection, pnum, computerSelection, cnum }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -48,9 +52,42 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == 3 & computerSelection == 2) {
         return("Player wins!");
     } else {
-        return("Please try again");
+        return("Err");
     }
 }
+
+const rBtn = document.querySelector('#rBtn');
+const pBtn = document.querySelector('#pBtn');
+const sBtn = document.querySelector('#sBtn');
+const resultDiv = document.getElementById('resultDiv');
+
+rBtn.addEventListener("click", () => {
+    playerSelection = "rock";
+    resultValue = select();
+    const result = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
+    resultDiv.textContent += `\nComputer selected: ${cnum}`;
+})
+
+pBtn.addEventListener("click", () => {
+    playerSelection = "paper";
+    resultValue = select()
+    const result = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
+    resultDiv.textContent += `\nComputer selected: ${cnum}`;
+})
+
+sBtn.addEventListener("click", () => {
+    playerSelection = "scissors";
+    select(playerSelection);
+    result = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${playerSelection}\n${result}`;
+    resultDiv.textContent += `\nComputer selected: ${cnum}`;
+    console.log(select())
+    console.log(playRound())
+})
+
+
 
 /*function game(playerSelection, computerSelection) {
     while (playerLives != 0 && computerLives != 0) {
@@ -79,33 +116,3 @@ function playRound(playerSelection, computerSelection) {
 
 const resultValue = game()
 console.log(resultValue)*/
-
-const rBtn = document.querySelector('#rBtn');
-const pBtn = document.querySelector('#pBtn');
-const sBtn = document.querySelector('#sBtn');
-const resultDiv = document.getElementById('resultDiv');
-
-rBtn.addEventListener("click", () => {
-    playerSelection = "rock";
-    resultValue = select();
-    const result = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
-    resultDiv.textContent += `\nComputer selected: ${cnum}`;
-})
-
-pBtn.addEventListener("click", () => {
-    playerSelection = "paper";
-    resultValue = select()
-    const result = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
-    resultDiv.textContent += `\nComputer selected: ${cnum}`;
-})
-
-sBtn.addEventListener("click", () => {
-    playerSelection = "scissors"
-    pnum = playerSelection
-    const { playerSelection, pnum, computerSelection, cnum } = select();
-    const result = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${playerSelection}\n${result}`;
-    resultDiv.textContent += `\nComputer selected: ${cnum}`;
-})
