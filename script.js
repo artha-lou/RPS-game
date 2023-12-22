@@ -6,6 +6,7 @@ let cnum = "";
 let playerLives = 5;
 let computerLives = 5;
 let resultPlayRound;
+let resultUpdateLives
 
 function select(pnum) {
     computerSelection = (Math.floor(Math.random()*3)+1);
@@ -61,16 +62,35 @@ const pBtn = document.querySelector('#pBtn');
 const sBtn = document.querySelector('#sBtn');
 const resultDiv = document.getElementById('resultDiv');
 
+function updateLives(resultPlayRound) {
+    if (resultPlayRound === "Player wins!") {
+        computerLives--;
+    } else if (resultPlayRound === "Computer wins!") {
+        playerLives--;
+    } else {
+    }
+
+    if (playerLives === 0) {
+        return("Computer is the winner!");
+      } else if (computerLives === 0) {
+        return("Player is the winner!")
+      } 
+}
+    
+
 function updateResult(pnum, resultPlayRound, cnum) {
     // Create elements
     const playerElement = document.createElement('p');
     const computerElement = document.createElement('p');
     const resultElement = document.createElement('p');
-
+    const playerLivesElement = document.createElement('p');
+    const computerLivesElement = document.createElement('p')
     // Set text content
     playerElement.textContent = `Player selected: ${pnum}`;
     computerElement.textContent = `Computer selected: ${cnum}`;
     resultElement.textContent = resultPlayRound;
+    playerLivesElement.textContent = `Player Lives: ${playerLives}`;
+    computerLivesElement.textContent = `Computer Lives: ${computerLives}`;
 
     // Clear existing content
     resultDiv.innerHTML = '';
@@ -79,6 +99,8 @@ function updateResult(pnum, resultPlayRound, cnum) {
     resultDiv.appendChild(playerElement);
     resultDiv.appendChild(computerElement);
     resultDiv.appendChild(resultElement);
+    resultDiv.appendChild(playerLivesElement);
+    resultDiv.appendChild(computerLivesElement);
 }
 
 // Example usage
@@ -88,6 +110,7 @@ rBtn.addEventListener("click", () => {
     pnum = "rock";
     resultSelect = select(pnum)
     resultPlayRound = playRound(playerSelection, computerSelection);
+    resultUpdateLives = updateLives(resultPlayRound)
     updateResult(pnum, resultPlayRound, cnum);
 })
 
