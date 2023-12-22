@@ -1,13 +1,10 @@
 let playerSelection = "";
 let pnum = ""
 let resultSelect = ''
-
 let computerSelection = 0;
 let cnum = "";
-
 let playerLives = 5;
 let computerLives = 5;
-
 let resultPlayRound;
 
 function select(pnum) {
@@ -92,8 +89,6 @@ rBtn.addEventListener("click", () => {
     resultSelect = select(pnum)
     resultPlayRound = playRound(playerSelection, computerSelection);
     updateResult(pnum, resultPlayRound, cnum);
-    console.log(select(playerSelection))
-    console.log(playRound(playerSelection, computerSelection))
 })
 
 pBtn.addEventListener("click", () => {
@@ -101,8 +96,6 @@ pBtn.addEventListener("click", () => {
     resultSelect = select(pnum);
     resultPlayRound = playRound(playerSelection, computerSelection);
     updateResult(pnum, resultPlayRound, cnum);
-    console.log(select(playerSelection))
-    console.log(playRound(playerSelection, computerSelection))
 })
 
 sBtn.addEventListener("click", () => {
@@ -110,8 +103,6 @@ sBtn.addEventListener("click", () => {
     resultSelect = select(pnum);
     resultPlayRound = playRound(playerSelection, computerSelection);
     updateResult(pnum, resultPlayRound, cnum);
-    console.log(select(playerSelection))
-    console.log(playRound(playerSelection, computerSelection))
 })
 
 
