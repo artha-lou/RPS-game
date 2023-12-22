@@ -1,6 +1,7 @@
 # RPS-game
 **Project Goals**
 Live Preview: https://artha-lou.github.io/RPS-game 
+
 This project allows the user to practice basic javascript/HTML/CSS code.
 
 The goal of this project is to allow the user to create a rock paper scissors game that is interactive and seen in the console 
