@@ -1,5 +1,6 @@
 let playerSelection = "";
 let pnum = ""
+let resultSelect = ''
 
 let computerSelection = 0;
 let cnum = "";
@@ -7,16 +8,15 @@ let cnum = "";
 let playerLives = 5;
 let computerLives = 5;
 
-let resultValue;
-let result;
+let resultPlayRound;
 
-function select(playerSelection) {
+function select(pnum) {
     computerSelection = (Math.floor(Math.random()*3)+1);
 
-    if (playerSelection == "rock") {
+    if (pnum == "rock") {
         playerSelection = 1;
         pnum = 'rock';
-    } else if (playerSelection == "paper") {
+    } else if (pnum == "paper") {
         playerSelection = 2;
         pnum = 'paper'
     } else {
@@ -33,26 +33,29 @@ function select(playerSelection) {
     cnum = "scissors";
     }
 
-    return { playerSelection, pnum, computerSelection, cnum }
+    return { playerSelection, pnum, computerSelection, cnum };
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return("Draw, try again!")
-    } else if (playerSelection == 1 & computerSelection == 2) {
-        return("Computer wins!");
-    } else if (playerSelection == 1 & computerSelection == 3) {
-        return("Player wins!");
-    } else if (playerSelection == 2 & computerSelection == 1) {
-        return("Player wins!");
-    } else if (playerSelection == 2 & computerSelection == 3) {
-        return("Computer wins!"); 
-    } else if (playerSelection == 3 & computerSelection == 1) {
-        return("Computer wins!");
-    } else if (playerSelection == 3 & computerSelection == 2) {
-        return("Player wins!");
+    // Convert playerSelection to a number
+    playerSelection = Number(playerSelection);
+
+    if (playerSelection === computerSelection) {
+        return "Draw, try again!";
+    } else if (playerSelection === 1 && computerSelection === 2) {
+        return "Computer wins!";
+    } else if (playerSelection === 1 && computerSelection === 3) {
+        return "Player wins!";
+    } else if (playerSelection === 2 && computerSelection === 1) {
+        return "Player wins!";
+    } else if (playerSelection === 2 && computerSelection === 3) {
+        return "Computer wins!";
+    } else if (playerSelection === 3 && computerSelection === 1) {
+        return "Computer wins!";
+    } else if (playerSelection === 3 && computerSelection === 2) {
+        return "Player wins!";
     } else {
-        return("Err");
+        return "Err";
     }
 }
 
@@ -62,29 +65,34 @@ const sBtn = document.querySelector('#sBtn');
 const resultDiv = document.getElementById('resultDiv');
 
 rBtn.addEventListener("click", () => {
-    playerSelection = "rock";
-    resultValue = select();
-    const result = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
+    pnum = "rock";
+    resultSelect = select(pnum)
+    resultPlayRound = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${resultPlayRound}`;
     resultDiv.textContent += `\nComputer selected: ${cnum}`;
+    console.log(select(playerSelection))
+    console.log(playRound(playerSelection, computerSelection))
 })
 
 pBtn.addEventListener("click", () => {
-    playerSelection = "paper";
-    resultValue = select()
-    const result = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${pnum}\n${result}`;
+    pnum = "paper";
+    resultSelect = select(pnum);
+    resultPlayRound = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${resultPlayRound}`;
     resultDiv.textContent += `\nComputer selected: ${cnum}`;
+    console.log(select(playerSelection))
+    console.log(playRound(playerSelection, computerSelection))
 })
 
 sBtn.addEventListener("click", () => {
-    playerSelection = "scissors";
-    select(playerSelection);
-    result = playRound(playerSelection, computerSelection);
-    resultDiv.textContent = `Player selected: ${playerSelection}\n${result}`;
+    pnum = "scissors";
+    resultSelect = select(pnum);
+    resultSelect
+    resultPlayRound = playRound(playerSelection, computerSelection);
+    resultDiv.textContent = `Player selected: ${pnum}\n${resultPlayRound}`;
     resultDiv.textContent += `\nComputer selected: ${cnum}`;
-    console.log(select())
-    console.log(playRound())
+    console.log(select(playerSelection))
+    console.log(playRound(playerSelection, computerSelection))
 })
 
 
