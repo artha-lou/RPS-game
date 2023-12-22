@@ -4,11 +4,13 @@
 This project allows the user to practice basic javascript/HTML/CSS code.
 
 **First Phase** 
+
 The goal of this project is to allow the user to create a rock paper scissors game that is interactive and seen in the console 
 when utilizing developer. 
 Java is written within the script of html for this project. 
 
 **Second Phase** 
+
 Javascript is deleted within the html and linked as a script. The script is updated so that the player may select a button (rock, paper, or scissors)
 which then triggers an eventListener function in JavaScript. This allows several functions to update (computer selection, player selection, player/ comp lives, and final winner) at the trigger of each selection. The format
 of the game is quite simple. Console.logs used in phase one were transitioned into DOM methods. A running score
