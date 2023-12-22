@@ -1,6 +1,5 @@
 # RPS-game
-**Project Goals**
-Live Preview: https://artha-lou.github.io/RPS-game 
+**Project Goals** 
 
 This project allows the user to practice basic javascript/HTML/CSS code.
 
