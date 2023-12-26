@@ -8,6 +8,7 @@ let computerLives = 5;
 let resultPlayRound;
 let resultUpdateLives
 let resultWinner
+let resultEndGame
 
 function select(pnum) {
     computerSelection = (Math.floor(Math.random()*3)+1);
@@ -76,7 +77,7 @@ function declareWinner(computerLives, playerLives) {
     } 
 }
 
-function updateResult(pnum, resultPlayRound, cnum, resultWinner) {
+function updateResult(pnum, resultPlayRound, cnum, resultWinner, resultEndGame) {
     // Create elements
     const playerElement = document.createElement('p');
     const computerElement = document.createElement('p');
@@ -84,6 +85,7 @@ function updateResult(pnum, resultPlayRound, cnum, resultWinner) {
     const playerLivesElement = document.createElement('p');
     const computerLivesElement = document.createElement('p')
     const winnerElement = document.createElement('p')
+    const endElement = document.createElement('p')
 
     // Set text content
     playerElement.textContent = `Player selected: ${pnum}`;
@@ -92,6 +94,7 @@ function updateResult(pnum, resultPlayRound, cnum, resultWinner) {
     playerLivesElement.textContent = `Player Lives: ${playerLives}`;
     computerLivesElement.textContent = `Computer Lives: ${computerLives}`;
     winnerElement.textContent = resultWinner;
+    endElement.textContent = resultEndGame
 
     // Clear existing content
     resultDiv.innerHTML = '';
@@ -103,6 +106,20 @@ function updateResult(pnum, resultPlayRound, cnum, resultWinner) {
     resultDiv.appendChild(playerLivesElement);
     resultDiv.appendChild(computerLivesElement);
     resultDiv.appendChild(winnerElement);
+    resultDiv.appendChild(endElement);
+
+    if (resultEndGame) {
+        endElement.textContent = resultEndGame;
+        // Reset the game state
+        playerLives = 5;
+        computerLives = 5;
+    }
+}
+
+function endGame(computerLives, playerLives) {
+    if (playerLives === 0 || computerLives === 0) {
+        return("Game will restart!");
+    }
 }
 
 const rBtn = document.querySelector('#rBtn');
@@ -112,27 +129,30 @@ const resultDiv = document.getElementById('resultDiv');
 
 rBtn.addEventListener("click", () => {
     pnum = "rock";
-    resultSelect = select(pnum)
+    resultSelect = select(pnum);
     resultPlayRound = playRound(playerSelection, computerSelection);
-    resultUpdateLives = updateLives(resultPlayRound)
-    resultWinner = declareWinner(computerLives, playerLives)
-    updateResult(pnum, resultPlayRound, cnum, resultWinner);
+    resultUpdateLives = updateLives(resultPlayRound);
+    resultWinner = declareWinner(computerLives, playerLives);
+    resultEndGame = endGame(computerLives, playerLives);
+    updateResult(pnum, resultPlayRound, cnum, resultWinner, resultEndGame);
 })
 
 pBtn.addEventListener("click", () => {
     pnum = "paper";
     resultSelect = select(pnum);
     resultPlayRound = playRound(playerSelection, computerSelection);
-    resultUpdateLives = updateLives(resultPlayRound)
-    resultWinner = declareWinner(computerLives, playerLives)
-    updateResult(pnum, resultPlayRound, cnum, resultWinner);
+    resultUpdateLives = updateLives(resultPlayRound);
+    resultWinner = declareWinner(computerLives, playerLives);
+    resultEndGame = endGame(computerLives, playerLives);
+    updateResult(pnum, resultPlayRound, cnum, resultWinner, resultEndGame);
 })
 
 sBtn.addEventListener("click", () => {
     pnum = "scissors";
     resultSelect = select(pnum);
     resultPlayRound = playRound(playerSelection, computerSelection);
-    resultUpdateLives = updateLives(resultPlayRound)
-    resultWinner = declareWinner(computerLives, playerLives)
-    updateResult(pnum, resultPlayRound, cnum, resultWinner);
+    resultUpdateLives = updateLives(resultPlayRound);
+    resultWinner = declareWinner(computerLives, playerLives);
+    resultEndGame = endGame(computerLives, playerLives);
+    updateResult(pnum, resultPlayRound, cnum, resultWinner, resultEndGame);
 })
