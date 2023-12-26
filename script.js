@@ -77,6 +77,12 @@ function declareWinner(computerLives, playerLives) {
     } 
 }
 
+function endGame(computerLives, playerLives) {
+    if (playerLives === 0 || computerLives === 0) {
+        return("Game will restart!");
+    }
+}
+
 function updateResult(pnum, resultPlayRound, cnum, resultWinner, resultEndGame) {
     // Create elements
     const playerElement = document.createElement('p');
@@ -116,11 +122,7 @@ function updateResult(pnum, resultPlayRound, cnum, resultWinner, resultEndGame) 
     }
 }
 
-function endGame(computerLives, playerLives) {
-    if (playerLives === 0 || computerLives === 0) {
-        return("Game will restart!");
-    }
-}
+
 
 const rBtn = document.querySelector('#rBtn');
 const pBtn = document.querySelector('#pBtn');
