@@ -17,6 +17,12 @@ of the game is quite simple. Console.logs used in phase one were transitioned in
 is displayed and announces a winner when the first player reaches zero lives. No UX is involved in this, very
 robust UI.
 
+**To-do List:** 
+- Update permanent sections for player and comp selection
+- Add play again button to restart the game
+- Align the resultDiv
+
+
 ![image](https://github.com/artha-lou/RPS-game/assets/149438087/8e07d770-4ce1-4e40-8213-ab26961d009b)
 
 
